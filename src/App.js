@@ -1,24 +1,26 @@
-import logo from './logo.svg';
 import './App.css';
+import {BrowserRouter, Routes,Route} from "react-router-dom"
+import Home from "./pages/home/home"
+import NowPlaying from "./pages/nowplay/nowPlaying"
+import Movie_Info from "./pages/movie-info/movie_info"
+import Header from "./shared/header/header"
+import logo from "./assets/logo.jpg"
+
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+  <>
+   <BrowserRouter>
+   <Header logo={logo} title="Movie Site" subTitle="The Best Movie Site"/>
+     <Routes>
+        <Route path="/" element={<Home/>}/>
+        <Route path="/now_playing" element={<NowPlaying/>}/>
+        <Route path="/movie/:id" element={<Movie_Info/>}/>
+      </Routes>  
+   </BrowserRouter>
+
+   </>
+   
   );
 }
 
